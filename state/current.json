@@ -1,0 +1,23 @@
+{
+  "context": {
+    "city": "Logan, UT",
+    "lat": 41.7355,
+    "lon": -111.8344,
+    "temp_c": 10.2,
+    "condition": "clear",
+    "hour": 12,
+    "is_day": true
+  },
+  "prompt": "city street, clear sky, bright daylight, vibrant colors, ultra-detailed",
+  "negative": "low quality, deformed, extra fingers, watermark, text",
+  "result": {
+    "url": "/outputs/20251127-125934_sd15_512x512.png",
+    "latency_sec": 3.864,
+    "device": "cuda",
+    "model_key": "sd15",
+    "nsfw_blocked": false,
+    "path": "C:\\Users\\frank\\Desktop\\SD model\\outputs\\20251127-125934_sd15_512x512.png",
+    "filename": "20251127-125934_sd15_512x512.png"
+  },
+  "timestamp": 1764273574
+}

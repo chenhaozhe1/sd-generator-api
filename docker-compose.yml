@@ -1,0 +1,50 @@
+version: "3.9"
+services:
+  api:
+    build: .
+    image: sdgen-api:latest
+    environment:
+      - TORCH_DEVICE=
+      - DEFAULT_MODEL=sd15
+      - CITY=Logan, UT
+      - LAT=41.7355
+      - LON=-111.8344
+      - TZ=America/Denver
+      # Optional: override Hugging Face IDs
+      # - HF_ID_SD15=runwayml/stable-diffusion-v1-5
+      # - HF_ID_SDXL=stabilityai/stable-diffusion-xl-base-1.0
+      # - HF_ID_LEOSAM=YOUR_LEOSAM_SDXL_HF_ID_OR_PATH
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./outputs:/workspace/outputs
+      - ./state:/workspace/state
+
+  controller:
+    image: sdgen-api:latest
+    command: python -m app.controller --interval 600
+    environment:
+      - API_BASE=http://api:8000
+      - GEN_WIDTH=512
+      - GEN_HEIGHT=512
+      - GEN_STEPS=28
+      - GEN_GUIDANCE=7.0
+      - GEN_SAFETY=true
+      - CITY=Logan, UT
+      - LAT=41.7355
+      - LON=-111.8344
+      - TZ=America/Denver
+    depends_on:
+      - api
+    volumes:
+      - ./state:/workspace/state
+
+  display:
+    image: sdgen-api:latest
+    command: python -m app.display.client
+    ports:
+      - "7861:7861"
+    depends_on:
+      - api
+    volumes:
+      - ./state:/workspace/state

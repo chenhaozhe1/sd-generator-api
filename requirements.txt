@@ -1,0 +1,29 @@
+prometheus-client==0.21.0
+requests==2.32.3
+python-dotenv==1.0.1
+
+# ---- Core web API ----
+fastapi==0.115.5
+uvicorn[standard]==0.32.0
+pydantic==2.7.4
+
+# ---- Instrumentation / utilities ----
+prometheus-client==0.21.0
+requests==2.32.3
+python-dotenv==1.0.1
+aiofiles==23.2.1
+
+# ---- ML stack (SD 1.5 / SDXL) ----
+torch==2.5.1
+torchvision==0.20.1
+
+# Make diffusers + transformers play nicely together
+diffusers==0.29.2
+transformers==4.46.3
+huggingface-hub==0.25.2
+accelerate==1.0.1
+safetensors==0.4.5
+
+# Common scientific deps (pulled anyway, pin for stability)
+numpy==1.26.4
+Pillow==10.4.0
